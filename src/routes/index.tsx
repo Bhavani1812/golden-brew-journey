@@ -25,7 +25,6 @@ function Index() {
   return (
     <main className="relative bg-background text-foreground">
       <SmoothScroll />
-      <Nav />
       <Hero />
       <Story />
       <Journey />
@@ -115,11 +114,6 @@ function Hero() {
 
       {/* Layer 3: content + product */}
       <div className="relative z-10 mx-auto flex min-h-screen w-[min(1200px,92%)] flex-col items-center justify-center pt-24 text-center">
-        <img
-          src={logo.url}
-          alt="Anita Cafe logo"
-          className="mb-8 h-32 w-auto animate-float drop-shadow-[0_10px_40px_oklch(0.88_0.14_85/0.4)]"
-        />
         <span className="mb-6 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-[var(--gold-soft)]">
           Premium Filter Coffee · Since Tradition
         </span>
@@ -146,9 +140,6 @@ function Hero() {
           </a>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.4em] text-muted-foreground">
-          Scroll
-        </div>
       </div>
     </section>
   );
