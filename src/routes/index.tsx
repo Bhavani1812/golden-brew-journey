@@ -119,9 +119,11 @@ function Hero() {
         <span className="mb-6 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-[var(--gold-soft)] opacity-0 [animation:fade-in_1s_ease-out_0.4s_forwards]">
           Premium Filter Coffee · Since Tradition
         </span>
-        <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] text-shine opacity-0 [animation:fade-in_1.2s_ease-out_3s_forwards]">
-          From Bean <em className="not-italic text-[var(--cream)]">to</em> Brew
-        </h1>
+        <div className="opacity-0 [animation:fade-in_1.2s_ease-out_3s_forwards]">
+          <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] text-shine">
+            From Bean <em className="not-italic text-[var(--cream)]">to</em> Brew
+          </h1>
+        </div>
         <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg opacity-0 [animation:fade-in_1s_ease-out_3.6s_forwards]">
           Experience the rich aroma of authentic South Indian coffee — freshly
           ground, slowly roasted, eternally honest.
