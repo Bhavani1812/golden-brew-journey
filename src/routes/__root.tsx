@@ -81,10 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "From bean to brew — experience the rich aroma of authentic South Indian filter coffee, freshly ground by Anita Cafe." },
       { name: "author", content: "Anita Cafe" },
       { property: "og:title", content: "Anita Cafe — Premium Filter Coffee Powder" },
-      { property: "og:description", content: "From bean to brew — experience the rich aroma of authentic South Indian filter coffee." },
+      { property: "og:description", content: "From bean to brew — experience the rich aroma of authentic South Indian filter coffee, freshly ground by Anita Cafe." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Anita Cafe — Premium Filter Coffee Powder" },
+      { name: "twitter:description", content: "From bean to brew — experience the rich aroma of authentic South Indian filter coffee, freshly ground by Anita Cafe." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a0c55147-3c05-41df-b3dd-3676efd4fd0c/id-preview-df8fa96a--8a1658a6-8890-40f1-a756-b7db18860675.lovable.app-1782142976947.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a0c55147-3c05-41df-b3dd-3676efd4fd0c/id-preview-df8fa96a--8a1658a6-8890-40f1-a756-b7db18860675.lovable.app-1782142976947.png" },
     ],
     links: [
       {
