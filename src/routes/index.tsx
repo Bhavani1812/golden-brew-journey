@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import heroVideo from "@/assets/hero-coffee.mp4.asset.json";
 import productPack from "@/assets/anita-pack.jpg.asset.json";
+import logo from "@/assets/anita-logo.png.asset.json";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { FloatingBeans } from "@/components/FloatingBeans";
 import { CoffeeBean } from "@/components/CoffeeBean";
@@ -44,9 +45,7 @@ function Nav() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto mt-4 flex w-[min(1200px,92%)] items-center justify-between rounded-full glass px-5 py-3">
         <a href="#hero" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-gold text-[oklch(0.18_0.025_140)] shadow-gold">
-            <CoffeeBean size={20} />
-          </span>
+          <img src={logo.url} alt="Anita Cafe" className="h-10 w-auto" />
           <span className="font-display text-xl tracking-wide text-shine">Anita Cafe</span>
         </a>
         <nav className="hidden gap-7 text-sm text-muted-foreground md:flex">
@@ -116,6 +115,11 @@ function Hero() {
 
       {/* Layer 3: content + product */}
       <div className="relative z-10 mx-auto flex min-h-screen w-[min(1200px,92%)] flex-col items-center justify-center pt-24 text-center">
+        <img
+          src={logo.url}
+          alt="Anita Cafe logo"
+          className="mb-8 h-32 w-auto animate-float drop-shadow-[0_10px_40px_oklch(0.88_0.14_85/0.4)]"
+        />
         <span className="mb-6 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-[var(--gold-soft)]">
           Premium Filter Coffee · Since Tradition
         </span>
@@ -127,30 +131,7 @@ function Hero() {
           ground, slowly roasted, eternally honest.
         </p>
 
-        {/* Product pack */}
-        <div
-          className="relative my-10 h-[440px] w-[300px] transition-transform duration-300 ease-out"
-          style={{
-            transform: `perspective(1200px) rotateY(${mouse.x * 8}deg) rotateX(${-mouse.y * 6}deg) translateY(${mouse.y * 8}px)`,
-          }}
-        >
-          <div
-            className="absolute inset-0 rounded-3xl"
-            style={{
-              background:
-                "radial-gradient(60% 60% at 50% 50%, oklch(0.88 0.14 85 / 0.5), transparent 70%)",
-              filter: "blur(40px)",
-            }}
-          />
-          <img
-            src={productPack.url}
-            alt="Anita Cafe Premium Filter Coffee Powder pack"
-            className="relative h-full w-full rounded-3xl object-cover shadow-luxe animate-float"
-            style={{ objectPosition: "center" }}
-          />
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href="#product"
             className="rounded-full bg-gradient-gold px-7 py-3 font-medium text-[oklch(0.18_0.025_140)] shadow-gold transition hover:scale-105"
@@ -613,15 +594,14 @@ function Contact() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          <ContactCard label="Phone" value="+91 98765 43210" href="tel:+919876543210" />
-          <ContactCard label="Email" value="hello@anitacafe.com" href="mailto:hello@anitacafe.com" />
-          <ContactCard label="Address" value="South India · Crafted with care" />
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          <ContactCard label="Phone" value="+91 78452 23599" href="tel:+917845223599" />
+          <ContactCard label="Email" value="anneyanitha@gmail.com" href="mailto:anneyanitha@gmail.com" />
         </div>
 
         <Reveal delay={200}>
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/917845223599"
             target="_blank"
             rel="noreferrer"
             className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 font-medium text-[oklch(0.18_0.025_140)] shadow-gold transition hover:scale-105"
@@ -651,9 +631,7 @@ function Footer() {
     <footer className="relative border-t border-border bg-[oklch(0.1_0.02_140)] py-12">
       <div className="mx-auto flex w-[min(1200px,92%)] flex-col items-center justify-between gap-6 md:flex-row">
         <a href="#hero" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-gold text-[oklch(0.18_0.025_140)]">
-            <CoffeeBean size={20} />
-          </span>
+          <img src={logo.url} alt="Anita Cafe" className="h-10 w-auto" />
           <span className="font-display text-xl text-shine">Anita Cafe</span>
         </a>
         <nav className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
