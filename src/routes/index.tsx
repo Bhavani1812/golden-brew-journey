@@ -25,6 +25,7 @@ function Index() {
   return (
     <main className="relative bg-background text-foreground">
       <SmoothScroll />
+      <Nav />
       <Hero />
       <Story />
       <Journey />
@@ -34,6 +35,7 @@ function Index() {
       <WhyUs />
       <Contact />
       <Footer />
+      <FloatingButtons />
     </main>
   );
 }
