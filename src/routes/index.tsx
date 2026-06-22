@@ -116,18 +116,18 @@ function Hero() {
 
       {/* Layer 3: content + product */}
       <div className="relative z-10 mx-auto flex min-h-screen w-[min(1200px,92%)] flex-col items-center justify-center pt-24 text-center">
-        <span className="mb-6 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-[var(--gold-soft)]">
+        <span className="mb-6 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-[var(--gold-soft)] opacity-0 [animation:fade-in_1s_ease-out_0.4s_forwards]">
           Premium Filter Coffee · Since Tradition
         </span>
-        <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] text-shine">
+        <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] text-shine opacity-0 [animation:fade-in_1.2s_ease-out_2s_forwards]">
           From Bean <em className="not-italic text-[var(--cream)]">to</em> Brew
         </h1>
-        <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
+        <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg opacity-0 [animation:fade-in_1s_ease-out_2.6s_forwards]">
           Experience the rich aroma of authentic South Indian coffee — freshly
           ground, slowly roasted, eternally honest.
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 opacity-0 [animation:fade-in_1s_ease-out_3.2s_forwards]">
           <a
             href="#product"
             className="rounded-full bg-gradient-gold px-7 py-3 font-medium text-[oklch(0.18_0.025_140)] shadow-gold transition hover:scale-105"
