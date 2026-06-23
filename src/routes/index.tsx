@@ -232,9 +232,9 @@ function Story() {
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-gold opacity-20 blur-3xl" />
             <img
-              src={productPack.url}
+              src={coffeePack.url}
               alt="Anita Cafe coffee in its origin landscape"
-              className="relative h-[520px] w-full rounded-[2rem] object-cover shadow-luxe"
+              className="relative h-[520px] w-full rounded-[2rem] object-contain bg-[oklch(0.22_0.03_145)] p-8 shadow-luxe"
             />
           </div>
         </Reveal>
@@ -245,11 +245,11 @@ function Story() {
 
 /* ---------- JOURNEY ---------- */
 const JOURNEY = [
-  { n: "01", t: "Coffee Plantation", d: "Mist-soaked hills where every bean begins." },
-  { n: "02", t: "Handpicked Cherries", d: "Only the ripest cherries make the cut." },
-  { n: "03", t: "Roasted Beans", d: "Slow-roasted to unlock deep aromatic oils." },
-  { n: "04", t: "Freshly Ground", d: "Ground in small batches for peak freshness." },
-  { n: "05", t: "The Perfect Cup", d: "Brewed strong, served with tradition." },
+  { n: "01", t: "Plantation", d: "Mist-soaked estates where every leaf and bean begins." },
+  { n: "02", t: "Handpicked Selection", d: "Only the finest cherries and tender leaves make the cut." },
+  { n: "03", t: "Roasting & Processing", d: "Slow-roasted and processed to unlock deep aromatic oils." },
+  { n: "04", t: "Fresh Grinding", d: "Ground in small batches for peak freshness in every pack." },
+  { n: "05", t: "Perfect Brew", d: "Brewed strong, sipped slow — served with tradition." },
 ];
 
 function Journey() {
@@ -259,33 +259,27 @@ function Journey() {
       <div className="relative mx-auto w-[min(1200px,92%)]">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">The Journey</p>
-          <h2 className="mt-3 font-display text-5xl md:text-6xl">Bean to cup, layer by layer.</h2>
+          <h2 className="mt-3 font-display text-5xl md:text-6xl">Coffee &amp; Tea Journey.</h2>
+          <p className="mt-3 text-muted-foreground">Scroll horizontally — from plantation to your perfect cup.</p>
         </Reveal>
 
-        <div className="relative mt-16">
-          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[var(--gold)] to-transparent md:block" />
-          <div className="space-y-12 md:space-y-24">
+        <div className="relative mt-16 -mx-[max(0px,calc((100vw-1200px)/2))]">
+          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-[max(16px,calc((100vw-1200px)/2))] pb-8 [scrollbar-width:thin]">
             {JOURNEY.map((s, i) => (
-              <Reveal key={s.n} from={i % 2 ? "right" : "left"} delay={i * 80}>
-                <div
-                  className={`flex flex-col items-center gap-6 md:flex-row ${
-                    i % 2 ? "md:flex-row-reverse" : ""
-                  }`}
-                >
-                  <div className="md:w-1/2">
-                    <div className="glass rounded-3xl p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-luxe">
-                      <div className="font-display text-7xl text-gradient-gold">{s.n}</div>
-                      <h3 className="mt-2 font-display text-3xl">{s.t}</h3>
-                      <p className="mt-3 text-muted-foreground">{s.d}</p>
-                    </div>
-                  </div>
-                  <div className="hidden md:block md:w-1/2">
-                    <div className="mx-auto grid h-40 w-40 place-items-center rounded-full glass shadow-gold animate-spin-slow">
-                      <CoffeeBean size={64} />
-                    </div>
+              <div
+                key={s.n}
+                className="group relative w-[78vw] flex-none snap-center sm:w-[420px]"
+              >
+                <div className="glass relative h-[420px] overflow-hidden rounded-3xl p-8 shadow-soft transition duration-500 hover:-translate-y-2 hover:shadow-gold">
+                  <div className="font-display text-[7rem] leading-none text-gradient-gold opacity-60">{s.n}</div>
+                  <h3 className="mt-2 font-display text-3xl">Step {i + 1}</h3>
+                  <p className="mt-1 font-display text-2xl text-[var(--gold-soft)]">{s.t}</p>
+                  <p className="mt-4 text-sm text-muted-foreground">{s.d}</p>
+                  <div className="absolute -bottom-10 -right-10 grid h-40 w-40 place-items-center rounded-full glass shadow-gold opacity-60 animate-spin-slow">
+                    <CoffeeBean size={48} />
                   </div>
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>
