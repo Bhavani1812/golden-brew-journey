@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import heroVideo from "@/assets/hero-coffee.mp4.asset.json";
+import heroVideo from "@/assets/hero-coffee-new.mp4.asset.json";
 import productPack from "@/assets/anita-pack.jpg.asset.json";
+import coffeePack from "@/assets/coffee-pack.png.asset.json";
+import teaPack from "@/assets/tea-pack.png.asset.json";
 import logo from "@/assets/anita-logo.png.asset.json";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { FloatingBeans } from "@/components/FloatingBeans";
@@ -10,12 +12,12 @@ import { CoffeeBean } from "@/components/CoffeeBean";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Anita Cafe — Premium Filter Coffee Powder" },
-      { name: "description", content: "From bean to brew. Authentic South Indian filter coffee, freshly ground. 100% pure coffee, no chicory." },
-      { property: "og:title", content: "Anita Cafe — Premium Filter Coffee Powder" },
-      { property: "og:description", content: "From bean to brew. Authentic South Indian filter coffee, freshly ground." },
-      { property: "og:image", content: productPack.url },
-      { name: "twitter:image", content: productPack.url },
+      { title: "Anita Cafe — Premium Filter Coffee & Tea Collection" },
+      { name: "description", content: "Crafted for every perfect sip. Premium filter coffee powders and tea blends, sourced, roasted and packed with care." },
+      { property: "og:title", content: "Anita Cafe — Premium Filter Coffee & Tea Collection" },
+      { property: "og:description", content: "Crafted for every perfect sip. Premium filter coffee powders and tea blends." },
+      { property: "og:image", content: coffeePack.url },
+      { name: "twitter:image", content: coffeePack.url },
     ],
   }),
   component: Index,
@@ -32,6 +34,7 @@ function Index() {
       <Product />
       <Brewing />
       <Testimonials />
+      <PriceList />
       <WhyUs />
       <Contact />
       <Footer />
@@ -53,8 +56,8 @@ function Nav() {
           {[
             ["Story", "#story"],
             ["Journey", "#journey"],
-            ["Product", "#product"],
-            ["Brewing", "#brewing"],
+            ["Products", "#product"],
+            ["Pricing", "#pricing"],
             ["Contact", "#contact"],
           ].map(([l, h]) => (
             <a key={h} href={h} className="transition hover:text-[var(--gold)]">
@@ -121,12 +124,11 @@ function Hero() {
         </span>
         <div className="opacity-0 [animation:fade-in_1.2s_ease-out_3s_forwards]">
           <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] text-shine">
-            From Bean <em className="not-italic text-[var(--cream)]">to</em> Brew
+            Premium Filter Coffee <em className="not-italic text-[var(--cream)]">&amp;</em> Tea Collection
           </h1>
         </div>
         <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg opacity-0 [animation:fade-in_1s_ease-out_3.6s_forwards]">
-          Experience the rich aroma of authentic South Indian coffee — freshly
-          ground, slowly roasted, eternally honest.
+          Crafted for every perfect sip — rich aroma, authentic taste, and unforgettable moments in every cup.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4 opacity-0 [animation:fade-in_1s_ease-out_4.2s_forwards]">
@@ -207,12 +209,10 @@ function Story() {
         <Reveal from="left">
           <p className="mb-4 text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">Our Story</p>
           <h2 className="font-display text-5xl leading-tight md:text-6xl">
-            A passion <span className="text-gradient-gold">brewed</span> through generations.
+            Sourced, roasted &amp; <span className="text-gradient-gold">blended</span> with care.
           </h2>
           <p className="mt-6 text-muted-foreground">
-            We hand-select each bean from the misty hills of South India,
-            slow-roast them in small batches, and freshly grind every pack so
-            the soul of the bean reaches your cup intact.
+            At Anita Cafe, we carefully source, roast, and blend premium coffee and tea to deliver rich aroma, authentic taste, and unforgettable moments in every cup.
           </p>
           <ul className="mt-8 space-y-3 text-sm">
             {[
@@ -232,9 +232,9 @@ function Story() {
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-gradient-gold opacity-20 blur-3xl" />
             <img
-              src={productPack.url}
+              src={coffeePack.url}
               alt="Anita Cafe coffee in its origin landscape"
-              className="relative h-[520px] w-full rounded-[2rem] object-cover shadow-luxe"
+              className="relative h-[520px] w-full rounded-[2rem] object-contain bg-[oklch(0.22_0.03_145)] p-8 shadow-luxe"
             />
           </div>
         </Reveal>
@@ -245,11 +245,11 @@ function Story() {
 
 /* ---------- JOURNEY ---------- */
 const JOURNEY = [
-  { n: "01", t: "Coffee Plantation", d: "Mist-soaked hills where every bean begins." },
-  { n: "02", t: "Handpicked Cherries", d: "Only the ripest cherries make the cut." },
-  { n: "03", t: "Roasted Beans", d: "Slow-roasted to unlock deep aromatic oils." },
-  { n: "04", t: "Freshly Ground", d: "Ground in small batches for peak freshness." },
-  { n: "05", t: "The Perfect Cup", d: "Brewed strong, served with tradition." },
+  { n: "01", t: "Plantation", d: "Mist-soaked estates where every leaf and bean begins." },
+  { n: "02", t: "Handpicked Selection", d: "Only the finest cherries and tender leaves make the cut." },
+  { n: "03", t: "Roasting & Processing", d: "Slow-roasted and processed to unlock deep aromatic oils." },
+  { n: "04", t: "Fresh Grinding", d: "Ground in small batches for peak freshness in every pack." },
+  { n: "05", t: "Perfect Brew", d: "Brewed strong, sipped slow — served with tradition." },
 ];
 
 function Journey() {
@@ -259,33 +259,27 @@ function Journey() {
       <div className="relative mx-auto w-[min(1200px,92%)]">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">The Journey</p>
-          <h2 className="mt-3 font-display text-5xl md:text-6xl">Bean to cup, layer by layer.</h2>
+          <h2 className="mt-3 font-display text-5xl md:text-6xl">Coffee &amp; Tea Journey.</h2>
+          <p className="mt-3 text-muted-foreground">Scroll horizontally — from plantation to your perfect cup.</p>
         </Reveal>
 
-        <div className="relative mt-16">
-          <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[var(--gold)] to-transparent md:block" />
-          <div className="space-y-12 md:space-y-24">
+        <div className="relative mt-16 -mx-[max(0px,calc((100vw-1200px)/2))]">
+          <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-[max(16px,calc((100vw-1200px)/2))] pb-8 [scrollbar-width:thin]">
             {JOURNEY.map((s, i) => (
-              <Reveal key={s.n} from={i % 2 ? "right" : "left"} delay={i * 80}>
-                <div
-                  className={`flex flex-col items-center gap-6 md:flex-row ${
-                    i % 2 ? "md:flex-row-reverse" : ""
-                  }`}
-                >
-                  <div className="md:w-1/2">
-                    <div className="glass rounded-3xl p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-luxe">
-                      <div className="font-display text-7xl text-gradient-gold">{s.n}</div>
-                      <h3 className="mt-2 font-display text-3xl">{s.t}</h3>
-                      <p className="mt-3 text-muted-foreground">{s.d}</p>
-                    </div>
-                  </div>
-                  <div className="hidden md:block md:w-1/2">
-                    <div className="mx-auto grid h-40 w-40 place-items-center rounded-full glass shadow-gold animate-spin-slow">
-                      <CoffeeBean size={64} />
-                    </div>
+              <div
+                key={s.n}
+                className="group relative w-[78vw] flex-none snap-center sm:w-[420px]"
+              >
+                <div className="glass relative h-[420px] overflow-hidden rounded-3xl p-8 shadow-soft transition duration-500 hover:-translate-y-2 hover:shadow-gold">
+                  <div className="font-display text-[7rem] leading-none text-gradient-gold opacity-60">{s.n}</div>
+                  <h3 className="mt-2 font-display text-3xl">Step {i + 1}</h3>
+                  <p className="mt-1 font-display text-2xl text-[var(--gold-soft)]">{s.t}</p>
+                  <p className="mt-4 text-sm text-muted-foreground">{s.d}</p>
+                  <div className="absolute -bottom-10 -right-10 grid h-40 w-40 place-items-center rounded-full glass shadow-gold opacity-60 animate-spin-slow">
+                    <CoffeeBean size={48} />
                   </div>
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>
@@ -295,92 +289,96 @@ function Journey() {
 }
 
 /* ---------- PRODUCT ---------- */
-const FEATURES = [
-  { t: "Rich Aroma", d: "Deep, lingering notes of cocoa and caramel." },
-  { t: "Strong Flavor", d: "Bold South Indian roast, never bitter." },
-  { t: "Freshly Ground", d: "Sealed at peak freshness, batch by batch." },
-  { t: "Premium Quality", d: "100% pure coffee. No chicory. Ever." },
+const COFFEE_PRODUCTS = [
+  "Home Blend",
+  "Commercial Blend",
+  "INS Elite",
+  "INS Premium",
+  "INS Strong",
+  "Arabica RCB",
+  "Aroma Gold RCB",
+  "Premium Gold RCB",
 ];
+const TEA_PRODUCTS = ["CTC Tea", "Ginger Tea", "Masala Tea"];
 
 function Product() {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const ref = useRef<HTMLDivElement>(null);
+  const [tab, setTab] = useState<"coffee" | "tea">("coffee");
+  const items = tab === "coffee" ? COFFEE_PRODUCTS : TEA_PRODUCTS;
+  const img = tab === "coffee" ? coffeePack.url : teaPack.url;
   return (
     <section id="product" className="relative overflow-hidden py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.13_0.025_145)] to-[oklch(0.18_0.03_50)]" />
-      <div
-        className="absolute left-1/2 top-1/2 -z-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          background: "radial-gradient(circle, oklch(0.82 0.14 85 / 0.25), transparent 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-      <FloatingBeans density={0.6} />
+      <FloatingBeans density={0.5} />
       <div className="relative mx-auto w-[min(1200px,92%)]">
         <Reveal>
           <div className="text-center">
-            <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">The Product</p>
-            <h2 className="mt-3 font-display text-5xl md:text-6xl">A pack worthy of the bean.</h2>
+            <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">Product Collection</p>
+            <h2 className="mt-3 font-display text-5xl md:text-6xl">A pack for every perfect sip.</h2>
           </div>
         </Reveal>
 
-        <div className="mt-16 grid items-center gap-12 lg:grid-cols-[1fr_1.1fr_1fr]">
-          {/* Left features */}
-          <div className="space-y-6">
-            {FEATURES.slice(0, 2).map((f, i) => (
-              <Reveal key={f.t} from="left" delay={i * 100}>
-                <FeatureCard {...f} />
-              </Reveal>
+        <div className="mt-12 flex justify-center">
+          <div className="glass inline-flex rounded-full p-1.5">
+            {(["coffee", "tea"] as const).map((k) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => setTab(k)}
+                className={`rounded-full px-6 py-2.5 text-sm font-medium transition ${
+                  tab === k
+                    ? "bg-gradient-gold text-[oklch(0.18_0.025_140)] shadow-gold"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {k === "coffee" ? "Coffee Collection" : "Tea Collection"}
+              </button>
             ))}
           </div>
+        </div>
 
-          {/* Center product */}
-          <div
-            ref={ref}
-            onMouseMove={(e) => {
-              const r = ref.current!.getBoundingClientRect();
-              setMouse({
-                x: ((e.clientX - r.left) / r.width - 0.5) * 2,
-                y: ((e.clientY - r.top) / r.height - 0.5) * 2,
-              });
-            }}
-            onMouseLeave={() => setMouse({ x: 0, y: 0 })}
-            className="relative mx-auto h-[560px] w-full max-w-[360px]"
-          >
-            <div
-              className="relative h-full w-full transition-transform duration-300 ease-out"
-              style={{
-                transform: `perspective(1400px) rotateY(${mouse.x * 18}deg) rotateX(${-mouse.y * 12}deg)`,
-              }}
-            >
-              <div className="absolute -inset-8 rounded-[2rem] bg-gradient-gold opacity-30 blur-3xl" />
-              <img
-                src={productPack.url}
-                alt="Anita Cafe Premium Filter Coffee Powder"
-                className="relative h-full w-full rounded-[2rem] object-cover shadow-luxe"
-              />
-            </div>
-          </div>
-
-          {/* Right features */}
-          <div className="space-y-6">
-            {FEATURES.slice(2).map((f, i) => (
-              <Reveal key={f.t} from="right" delay={i * 100}>
-                <FeatureCard {...f} />
-              </Reveal>
-            ))}
-          </div>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((name, i) => (
+            <ProductCard key={`${tab}-${name}`} name={name} image={img} index={i} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function FeatureCard({ t, d }: { t: string; d: string }) {
+function ProductCard({ name, image, index }: { name: string; image: string; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   return (
-    <div className="glass rounded-2xl p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-gold">
-      <h3 className="font-display text-2xl text-gradient-gold">{t}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+    <div
+      style={{
+        animation: `fade-in 0.7s ease-out ${index * 80}ms backwards`,
+      }}
+    >
+      <div
+        ref={ref}
+        onMouseMove={(e) => {
+          const r = ref.current!.getBoundingClientRect();
+          setTilt({
+            x: ((e.clientX - r.left) / r.width - 0.5) * 2,
+            y: ((e.clientY - r.top) / r.height - 0.5) * 2,
+          });
+        }}
+        onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+        className="group glass relative h-[340px] overflow-hidden rounded-3xl p-5 shadow-soft transition duration-300 hover:shadow-gold"
+        style={{
+          transform: `perspective(900px) rotateY(${tilt.x * 8}deg) rotateX(${-tilt.y * 8}deg) scale(${tilt.x || tilt.y ? 1.03 : 1})`,
+        }}
+      >
+        <div className="absolute -inset-8 -z-10 rounded-[2rem] bg-gradient-gold opacity-0 blur-3xl transition group-hover:opacity-30" />
+        <div className="grid h-[220px] place-items-center">
+          <img src={image} alt={name} className="max-h-full max-w-full object-contain drop-shadow-2xl transition duration-500 group-hover:scale-105" />
+        </div>
+        <div className="mt-3 text-center">
+          <h3 className="font-display text-xl text-shine">{name}</h3>
+          <p className="mt-1 text-xs uppercase tracking-[0.25em] text-[var(--gold-soft)]">Premium Blend</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -527,6 +525,110 @@ function Testimonials() {
 }
 
 /* ---------- WHY US ---------- */
+const COFFEE_PRICES: [string, string, string, string][] = [
+  ["Home Blend", "₹249", "₹449", "₹899"],
+  ["Commercial Blend", "₹199", "₹399", "₹749"],
+  ["INS Elite", "₹229", "₹449", "₹849"],
+  ["INS Premium", "₹229", "₹449", "₹849"],
+  ["INS Strong", "₹219", "₹429", "₹799"],
+  ["Arabica RCB", "₹329", "₹649", "₹1199"],
+  ["Aroma Gold RCB", "₹299", "₹599", "₹1099"],
+  ["Premium Gold RCB", "₹279", "₹549", "₹999"],
+];
+const TEA_PRICES: [string, string, string, string][] = [
+  ["CTC Tea", "₹149", "₹249", "₹449"],
+  ["Ginger Tea", "₹279", "₹499", "₹949"],
+  ["Masala Tea", "₹299", "₹549", "₹1049"],
+];
+
+function PriceList() {
+  const [tab, setTab] = useState<"coffee" | "tea">("coffee");
+  const rows = tab === "coffee" ? COFFEE_PRICES : TEA_PRICES;
+  return (
+    <section id="pricing" className="relative overflow-hidden py-32">
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.13_0.025_145)] to-[oklch(0.18_0.03_50)]" />
+      <div className="relative mx-auto w-[min(1100px,92%)]">
+        <Reveal>
+          <div className="text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">Price List</p>
+            <h2 className="mt-3 font-display text-5xl md:text-6xl">Honest pricing, every pack.</h2>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 flex justify-center">
+          <div className="glass inline-flex rounded-full p-1.5">
+            {(["coffee", "tea"] as const).map((k) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => setTab(k)}
+                className={`rounded-full px-6 py-2.5 text-sm font-medium transition ${
+                  tab === k
+                    ? "bg-gradient-gold text-[oklch(0.18_0.025_140)] shadow-gold"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {k === "coffee" ? "Coffee Products" : "Tea Products"}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <Reveal>
+          <div className="mt-10 overflow-hidden rounded-3xl glass shadow-luxe">
+            {/* Desktop table */}
+            <div className="hidden md:block">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-border bg-[oklch(0.95_0.02_80/0.04)] text-xs uppercase tracking-[0.25em] text-[var(--gold-soft)]">
+                    <th className="px-6 py-5">Product</th>
+                    <th className="px-6 py-5 text-right">250g</th>
+                    <th className="px-6 py-5 text-right">500g</th>
+                    <th className="px-6 py-5 text-right">1 Kg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map(([name, a, b, c]) => (
+                    <tr
+                      key={name}
+                      className="group border-b border-border/60 transition last:border-0 hover:bg-[oklch(0.82_0.14_85/0.06)]"
+                    >
+                      <td className="px-6 py-5 font-display text-lg">{name}</td>
+                      <td className="px-6 py-5 text-right font-medium text-foreground">{a}</td>
+                      <td className="px-6 py-5 text-right font-medium text-foreground">{b}</td>
+                      <td className="px-6 py-5 text-right font-display text-lg text-gradient-gold">{c}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {/* Mobile cards */}
+            <div className="divide-y divide-border md:hidden">
+              {rows.map(([name, a, b, c]) => (
+                <div key={name} className="p-5">
+                  <div className="font-display text-lg">{name}</div>
+                  <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                    {[["250g", a], ["500g", b], ["1 Kg", c]].map(([k, v]) => (
+                      <div key={k} className="rounded-xl bg-[oklch(0.95_0.02_80/0.05)] py-2.5">
+                        <div className="text-[10px] uppercase tracking-widest text-[var(--gold-soft)]">{k}</div>
+                        <div className="mt-0.5 font-medium">{v}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        <p className="mt-6 text-center text-xs text-muted-foreground">
+          *Prices inclusive of taxes. Bulk &amp; wholesale enquiries — please contact us.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 const WHY = [
   { t: "Fresh Beans", d: "Sourced and roasted weekly." },
   { t: "Authentic Taste", d: "Traditional South Indian profile." },
