@@ -124,12 +124,11 @@ function Hero() {
         </span>
         <div className="opacity-0 [animation:fade-in_1.2s_ease-out_3s_forwards]">
           <h1 className="font-display text-[clamp(3rem,9vw,8rem)] leading-[0.95] text-shine">
-            From Bean <em className="not-italic text-[var(--cream)]">to</em> Brew
+            Premium Filter Coffee <em className="not-italic text-[var(--cream)]">&amp;</em> Tea Collection
           </h1>
         </div>
         <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg opacity-0 [animation:fade-in_1s_ease-out_3.6s_forwards]">
-          Experience the rich aroma of authentic South Indian coffee — freshly
-          ground, slowly roasted, eternally honest.
+          Crafted for every perfect sip — rich aroma, authentic taste, and unforgettable moments in every cup.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4 opacity-0 [animation:fade-in_1s_ease-out_4.2s_forwards]">
@@ -210,12 +209,10 @@ function Story() {
         <Reveal from="left">
           <p className="mb-4 text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">Our Story</p>
           <h2 className="font-display text-5xl leading-tight md:text-6xl">
-            A passion <span className="text-gradient-gold">brewed</span> through generations.
+            Sourced, roasted &amp; <span className="text-gradient-gold">blended</span> with care.
           </h2>
           <p className="mt-6 text-muted-foreground">
-            We hand-select each bean from the misty hills of South India,
-            slow-roast them in small batches, and freshly grind every pack so
-            the soul of the bean reaches your cup intact.
+            At Anita Cafe, we carefully source, roast, and blend premium coffee and tea to deliver rich aroma, authentic taste, and unforgettable moments in every cup.
           </p>
           <ul className="mt-8 space-y-3 text-sm">
             {[
