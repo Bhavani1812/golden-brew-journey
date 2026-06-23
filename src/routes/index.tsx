@@ -525,6 +525,110 @@ function Testimonials() {
 }
 
 /* ---------- WHY US ---------- */
+const COFFEE_PRICES: [string, string, string, string][] = [
+  ["Home Blend", "₹249", "₹449", "₹899"],
+  ["Commercial Blend", "₹199", "₹399", "₹749"],
+  ["INS Elite", "₹229", "₹449", "₹849"],
+  ["INS Premium", "₹229", "₹449", "₹849"],
+  ["INS Strong", "₹219", "₹429", "₹799"],
+  ["Arabica RCB", "₹329", "₹649", "₹1199"],
+  ["Aroma Gold RCB", "₹299", "₹599", "₹1099"],
+  ["Premium Gold RCB", "₹279", "₹549", "₹999"],
+];
+const TEA_PRICES: [string, string, string, string][] = [
+  ["CTC Tea", "₹149", "₹249", "₹449"],
+  ["Ginger Tea", "₹279", "₹499", "₹949"],
+  ["Masala Tea", "₹299", "₹549", "₹1049"],
+];
+
+function PriceList() {
+  const [tab, setTab] = useState<"coffee" | "tea">("coffee");
+  const rows = tab === "coffee" ? COFFEE_PRICES : TEA_PRICES;
+  return (
+    <section id="pricing" className="relative overflow-hidden py-32">
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.13_0.025_145)] to-[oklch(0.18_0.03_50)]" />
+      <div className="relative mx-auto w-[min(1100px,92%)]">
+        <Reveal>
+          <div className="text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">Price List</p>
+            <h2 className="mt-3 font-display text-5xl md:text-6xl">Honest pricing, every pack.</h2>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 flex justify-center">
+          <div className="glass inline-flex rounded-full p-1.5">
+            {(["coffee", "tea"] as const).map((k) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => setTab(k)}
+                className={`rounded-full px-6 py-2.5 text-sm font-medium transition ${
+                  tab === k
+                    ? "bg-gradient-gold text-[oklch(0.18_0.025_140)] shadow-gold"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {k === "coffee" ? "Coffee Products" : "Tea Products"}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <Reveal>
+          <div className="mt-10 overflow-hidden rounded-3xl glass shadow-luxe">
+            {/* Desktop table */}
+            <div className="hidden md:block">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-border bg-[oklch(0.95_0.02_80/0.04)] text-xs uppercase tracking-[0.25em] text-[var(--gold-soft)]">
+                    <th className="px-6 py-5">Product</th>
+                    <th className="px-6 py-5 text-right">250g</th>
+                    <th className="px-6 py-5 text-right">500g</th>
+                    <th className="px-6 py-5 text-right">1 Kg</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map(([name, a, b, c]) => (
+                    <tr
+                      key={name}
+                      className="group border-b border-border/60 transition last:border-0 hover:bg-[oklch(0.82_0.14_85/0.06)]"
+                    >
+                      <td className="px-6 py-5 font-display text-lg">{name}</td>
+                      <td className="px-6 py-5 text-right font-medium text-foreground">{a}</td>
+                      <td className="px-6 py-5 text-right font-medium text-foreground">{b}</td>
+                      <td className="px-6 py-5 text-right font-display text-lg text-gradient-gold">{c}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {/* Mobile cards */}
+            <div className="divide-y divide-border md:hidden">
+              {rows.map(([name, a, b, c]) => (
+                <div key={name} className="p-5">
+                  <div className="font-display text-lg">{name}</div>
+                  <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                    {[["250g", a], ["500g", b], ["1 Kg", c]].map(([k, v]) => (
+                      <div key={k} className="rounded-xl bg-[oklch(0.95_0.02_80/0.05)] py-2.5">
+                        <div className="text-[10px] uppercase tracking-widest text-[var(--gold-soft)]">{k}</div>
+                        <div className="mt-0.5 font-medium">{v}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        <p className="mt-6 text-center text-xs text-muted-foreground">
+          *Prices inclusive of taxes. Bulk &amp; wholesale enquiries — please contact us.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 const WHY = [
   { t: "Fresh Beans", d: "Sourced and roasted weekly." },
   { t: "Authentic Taste", d: "Traditional South Indian profile." },
