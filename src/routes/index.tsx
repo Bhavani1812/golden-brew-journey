@@ -289,92 +289,96 @@ function Journey() {
 }
 
 /* ---------- PRODUCT ---------- */
-const FEATURES = [
-  { t: "Rich Aroma", d: "Deep, lingering notes of cocoa and caramel." },
-  { t: "Strong Flavor", d: "Bold South Indian roast, never bitter." },
-  { t: "Freshly Ground", d: "Sealed at peak freshness, batch by batch." },
-  { t: "Premium Quality", d: "100% pure coffee. No chicory. Ever." },
+const COFFEE_PRODUCTS = [
+  "Home Blend",
+  "Commercial Blend",
+  "INS Elite",
+  "INS Premium",
+  "INS Strong",
+  "Arabica RCB",
+  "Aroma Gold RCB",
+  "Premium Gold RCB",
 ];
+const TEA_PRODUCTS = ["CTC Tea", "Ginger Tea", "Masala Tea"];
 
 function Product() {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
-  const ref = useRef<HTMLDivElement>(null);
+  const [tab, setTab] = useState<"coffee" | "tea">("coffee");
+  const items = tab === "coffee" ? COFFEE_PRODUCTS : TEA_PRODUCTS;
+  const img = tab === "coffee" ? coffeePack.url : teaPack.url;
   return (
     <section id="product" className="relative overflow-hidden py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.13_0.025_145)] to-[oklch(0.18_0.03_50)]" />
-      <div
-        className="absolute left-1/2 top-1/2 -z-0 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          background: "radial-gradient(circle, oklch(0.82 0.14 85 / 0.25), transparent 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-      <FloatingBeans density={0.6} />
+      <FloatingBeans density={0.5} />
       <div className="relative mx-auto w-[min(1200px,92%)]">
         <Reveal>
           <div className="text-center">
-            <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">The Product</p>
-            <h2 className="mt-3 font-display text-5xl md:text-6xl">A pack worthy of the bean.</h2>
+            <p className="text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">Product Collection</p>
+            <h2 className="mt-3 font-display text-5xl md:text-6xl">A pack for every perfect sip.</h2>
           </div>
         </Reveal>
 
-        <div className="mt-16 grid items-center gap-12 lg:grid-cols-[1fr_1.1fr_1fr]">
-          {/* Left features */}
-          <div className="space-y-6">
-            {FEATURES.slice(0, 2).map((f, i) => (
-              <Reveal key={f.t} from="left" delay={i * 100}>
-                <FeatureCard {...f} />
-              </Reveal>
+        <div className="mt-12 flex justify-center">
+          <div className="glass inline-flex rounded-full p-1.5">
+            {(["coffee", "tea"] as const).map((k) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => setTab(k)}
+                className={`rounded-full px-6 py-2.5 text-sm font-medium transition ${
+                  tab === k
+                    ? "bg-gradient-gold text-[oklch(0.18_0.025_140)] shadow-gold"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {k === "coffee" ? "Coffee Collection" : "Tea Collection"}
+              </button>
             ))}
           </div>
+        </div>
 
-          {/* Center product */}
-          <div
-            ref={ref}
-            onMouseMove={(e) => {
-              const r = ref.current!.getBoundingClientRect();
-              setMouse({
-                x: ((e.clientX - r.left) / r.width - 0.5) * 2,
-                y: ((e.clientY - r.top) / r.height - 0.5) * 2,
-              });
-            }}
-            onMouseLeave={() => setMouse({ x: 0, y: 0 })}
-            className="relative mx-auto h-[560px] w-full max-w-[360px]"
-          >
-            <div
-              className="relative h-full w-full transition-transform duration-300 ease-out"
-              style={{
-                transform: `perspective(1400px) rotateY(${mouse.x * 18}deg) rotateX(${-mouse.y * 12}deg)`,
-              }}
-            >
-              <div className="absolute -inset-8 rounded-[2rem] bg-gradient-gold opacity-30 blur-3xl" />
-              <img
-                src={productPack.url}
-                alt="Anita Cafe Premium Filter Coffee Powder"
-                className="relative h-full w-full rounded-[2rem] object-cover shadow-luxe"
-              />
-            </div>
-          </div>
-
-          {/* Right features */}
-          <div className="space-y-6">
-            {FEATURES.slice(2).map((f, i) => (
-              <Reveal key={f.t} from="right" delay={i * 100}>
-                <FeatureCard {...f} />
-              </Reveal>
-            ))}
-          </div>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((name, i) => (
+            <ProductCard key={`${tab}-${name}`} name={name} image={img} index={i} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function FeatureCard({ t, d }: { t: string; d: string }) {
+function ProductCard({ name, image, index }: { name: string; image: string; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   return (
-    <div className="glass rounded-2xl p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-gold">
-      <h3 className="font-display text-2xl text-gradient-gold">{t}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+    <div
+      style={{
+        animation: `fade-in 0.7s ease-out ${index * 80}ms backwards`,
+      }}
+    >
+      <div
+        ref={ref}
+        onMouseMove={(e) => {
+          const r = ref.current!.getBoundingClientRect();
+          setTilt({
+            x: ((e.clientX - r.left) / r.width - 0.5) * 2,
+            y: ((e.clientY - r.top) / r.height - 0.5) * 2,
+          });
+        }}
+        onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+        className="group glass relative h-[340px] overflow-hidden rounded-3xl p-5 shadow-soft transition duration-300 hover:shadow-gold"
+        style={{
+          transform: `perspective(900px) rotateY(${tilt.x * 8}deg) rotateX(${-tilt.y * 8}deg) scale(${tilt.x || tilt.y ? 1.03 : 1})`,
+        }}
+      >
+        <div className="absolute -inset-8 -z-10 rounded-[2rem] bg-gradient-gold opacity-0 blur-3xl transition group-hover:opacity-30" />
+        <div className="grid h-[220px] place-items-center">
+          <img src={image} alt={name} className="max-h-full max-w-full object-contain drop-shadow-2xl transition duration-500 group-hover:scale-105" />
+        </div>
+        <div className="mt-3 text-center">
+          <h3 className="font-display text-xl text-shine">{name}</h3>
+          <p className="mt-1 text-xs uppercase tracking-[0.25em] text-[var(--gold-soft)]">Premium Blend</p>
+        </div>
+      </div>
     </div>
   );
 }
