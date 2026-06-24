@@ -600,11 +600,6 @@ const COFFEE_PRICES: [string, string, string, string][] = [
   ["Home Blend", "₹249", "₹449", "₹899"],
   ["Commercial Blend", "₹199", "₹399", "₹749"],
   ["INS Elite", "₹229", "₹449", "₹849"],
-  ["INS Premium", "₹229", "₹449", "₹849"],
-  ["INS Strong", "₹219", "₹429", "₹799"],
-  ["Arabica RCB", "₹329", "₹649", "₹1199"],
-  ["Aroma Gold RCB", "₹299", "₹599", "₹1099"],
-  ["Premium Gold RCB", "₹279", "₹549", "₹999"],
 ];
 const TEA_PRICES: [string, string, string, string][] = [
   ["CTC Tea", "₹149", "₹249", "₹449"],
@@ -764,15 +759,15 @@ function Contact() {
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           <ContactCard label="Phone" value="+91 78452 23599" href="tel:+917845223599" />
-          <ContactCard label="Email" value="anneyanitha@gmail.com" href="mailto:anneyanitha@gmail.com" />
+          <ContactCard label="Email" value="anitacafecoffee@gmail.com" href="mailto:anitacafecoffee@gmail.com" />
         </div>
 
         <Reveal delay={200}>
           <a
-            href="https://wa.me/917845223599"
+            href="https://wa.me/917845223599?text=Hi%20Anita%20Cafe%2C%20I%27d%20like%20to%20place%20an%20order%20for%20your%20premium%20coffee%20%2F%20tea."
             target="_blank"
             rel="noreferrer"
-            className="mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 font-medium text-[oklch(0.18_0.025_140)] shadow-gold transition hover:scale-105"
+            className="animate-pop mt-10 inline-flex items-center gap-2 rounded-full bg-gradient-gold px-8 py-4 font-medium text-[oklch(0.18_0.025_140)] shadow-gold transition hover:scale-105"
           >
             <span className="h-2 w-2 rounded-full bg-[oklch(0.18_0.025_140)]" />
             Chat on WhatsApp
