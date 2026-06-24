@@ -4,6 +4,7 @@ import heroVideo from "@/assets/hero-coffee-new.mp4.asset.json";
 import productPack from "@/assets/anita-pack.jpg.asset.json";
 import coffeePack from "@/assets/coffee-pack.png.asset.json";
 import teaPack from "@/assets/tea-pack.png.asset.json";
+import storyImage from "@/assets/story-coffee-tea.png.asset.json";
 import logo from "@/assets/anita-logo.png.asset.json";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { FloatingBeans } from "@/components/FloatingBeans";
