@@ -210,44 +210,34 @@ function Story() {
         <Reveal from="left">
           <p className="mb-4 text-xs uppercase tracking-[0.4em] text-[var(--gold-soft)]">Our Story</p>
           <h2 className="font-display text-5xl leading-tight md:text-6xl">
-            Sourced, roasted &amp; <span className="text-gradient-gold">blended</span> with care.
+            The perfect cup, <span className="text-gradient-gold">freshly packed</span>.
           </h2>
           <p className="mt-6 text-muted-foreground">
-            At Anita Cafe, we carefully source, roast, and blend premium coffee and tea to deliver rich aroma, authentic taste, and unforgettable moments in every cup.
+            Experience the perfect cup of tea with Anita Cafe Premium Tea Powder. Carefully selected tea leaves deliver a rich aroma, deep color, and refreshing taste in every cup. Freshly packed to preserve quality and flavor, making it an ideal choice for your daily tea moments.
           </p>
           <ul className="mt-8 space-y-3 text-sm">
             {[
-              "Passion for authentic coffee",
-              "Carefully selected beans",
-              "Traditional roasting process",
-              "Freshly ground coffee powder",
+              "Rich Aroma",
+              "Strong & Refreshing Taste",
+              "Premium Quality Tea Leaves",
+              "Freshly Packed",
+              "Perfect for Daily Use",
             ].map((t) => (
               <li key={t} className="flex items-center gap-3">
-                <span className="h-1.5 w-6 rounded-full bg-gradient-gold" />
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-gradient-gold text-[oklch(0.18_0.025_140)] text-[11px] font-bold shadow-gold">✓</span>
                 <span>{t}</span>
               </li>
             ))}
           </ul>
         </Reveal>
         <Reveal from="right" delay={150}>
-          <div className="relative grid grid-cols-2 gap-4">
-            <div className="absolute -inset-6 rounded-[2rem] bg-gradient-gold opacity-20 blur-3xl" />
-            <div className="relative group">
-              <img
-                src={coffeePack.url}
-                alt="Anita Cafe premium filter coffee powder pack"
-                className="relative h-[480px] w-full rounded-[2rem] object-contain bg-[oklch(0.22_0.03_145)] p-6 shadow-luxe transition-transform duration-500 group-hover:-translate-y-2"
-              />
-              <p className="mt-3 text-center text-xs uppercase tracking-[0.3em] text-[var(--gold-soft)]">Coffee</p>
-            </div>
-            <div className="relative group mt-12">
-              <img
-                src={teaPack.url}
-                alt="Anita Cafe premium tea collection pack"
-                className="relative h-[480px] w-full rounded-[2rem] object-contain bg-[oklch(0.95_0.04_85)] p-6 shadow-luxe transition-transform duration-500 group-hover:-translate-y-2"
-              />
-              <p className="mt-3 text-center text-xs uppercase tracking-[0.3em] text-[var(--gold-soft)]">Tea</p>
-            </div>
+          <div className="relative group">
+            <div className="absolute -inset-6 rounded-[2rem] bg-gradient-gold opacity-25 blur-3xl" />
+            <img
+              src={storyImage.url}
+              alt="Anita Cafe premium coffee and tea collection in a sunrise plantation"
+              className="relative w-full rounded-[2rem] object-cover shadow-luxe transition-transform duration-700 group-hover:-translate-y-2 group-hover:scale-[1.02]"
+            />
           </div>
         </Reveal>
       </div>
